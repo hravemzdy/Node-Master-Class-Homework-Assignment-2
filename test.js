@@ -1,6 +1,7 @@
 // Dependencies
 var helpers = require('./lib/helpers');
 var _mailgun = require('./lib/_utils_mailgun');
+var _stripe = require('./lib/_utils_stripe');
 var _cart = require('./lib/_cart');
 
 var testEmail = 'ladis@lav.lisy@seznam.cz';
@@ -17,6 +18,8 @@ var testArticle = {
 
 emptyCart.cartItems.push(testArticle);
 var testCart = _cart.recalculateCart(emptyCart);
+
+console.log(testCart);
 
 var testUser = {
   'email' : 'ladislav.lisy@seznam.cz',
@@ -35,10 +38,22 @@ var testConfirm = _mailgun.createEmailConfirmation(testInvoice);
 
 console.log(testConfirm);
 
-_mailgun.notifyCustomerByEmail(testConfirm, function(err){
+var testPayment = _stripe.createCharge(testInvoice.totalCharge, 'usd');
+
+console.log(testPayment);
+
+_stripe.chargeCustomer(testCart.totalPrice, 'usd', function(err){
   if (!err){
-    console.log("successfully");
+    console.log("STRIPE request ended successfully");
   }else{
     console.log(err);
   }
 });
+
+//_mailgun.notifyCustomerByEmail(testConfirm, function(err){
+//  if (!err){
+//    console.log("MAILGUN request ended successfully");
+//  }else{
+//    console.log(err);
+//  }
+//});
