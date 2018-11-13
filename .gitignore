@@ -66,3 +66,5 @@ typings/
 https/
 # api keys folder
 api_keys/
+api_keys/_key_mailgun.json
+api_keys/_key_stripe.json
