@@ -1,3 +1,10 @@
+
+/*
+ * PIZZA Shop rest API
+ *
+ * Test Success Order
+ */
+
 // Dependencies
 var helpers = require('./lib/helpers');
 var _user_service = require('./lib/Users_service');
@@ -8,6 +15,7 @@ var _mailgun = require('./lib/_utils_mailgun');
 var _stripe = require('./lib/_utils_stripe');
 var _cart = require('./lib/_cart');
 
+//  TEST data
 var testUserEmail = 'ladislav.test@seznam.cz';
 var testUserFullname = 'Ladislav Test';
 var testUserAddress = 'Na Pankraci 125, Praha 4';
