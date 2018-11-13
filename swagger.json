@@ -1,0 +1,777 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1",
+    "title" : "Node MasterClass Course Homework 2",
+    "description" : "Pirple"
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/MzdyHrave/Pizza2/1",
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/login" : {
+      "post" : {
+        "description" : "User login with email and password",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "user's login data",
+          "description" : "email and password of user",
+          "schema" : {
+            "type" : "object",
+            "required" : [ "email", "password" ],
+            "properties" : {
+              "email" : {
+                "type" : "string",
+                "example" : "user.pizza@example.com"
+              },
+              "password" : {
+                "type" : "string",
+                "example" : "secret"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "create a new login token",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "email" : {
+                  "type" : "string",
+                  "example" : "user.pizza@example.com"
+                },
+                "id" : {
+                  "type" : "string",
+                  "example" : "eg6w0monqgz2hbhu09g4"
+                },
+                "expires" : {
+                  "type" : "number",
+                  "example" : 1541762240543
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Business logic error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Could not find the specified user"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Data error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Could not create a new token"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "description" : "User extending token for 1 hour from now",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "user's token data",
+          "description" : "token id and extend flag",
+          "schema" : {
+            "type" : "object",
+            "required" : [ "id", "extend" ],
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "example" : "eg6w0monqgz2hbhu09g4"
+              },
+              "extend" : {
+                "type" : "boolean",
+                "example" : true
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "extends expiration time of login token",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "email" : {
+                  "type" : "string",
+                  "example" : "user.pizza@example.com"
+                },
+                "id" : {
+                  "type" : "string",
+                  "example" : "eg6w0monqgz2hbhu09g4"
+                },
+                "expires" : {
+                  "type" : "number",
+                  "example" : 1541762240543
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Business logic error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Could not update token's expiration"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Data error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Token already expired and can't be extended"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/logout" : {
+      "delete" : {
+        "description" : "User deleting existing token",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "id",
+          "description" : "token id",
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "delete a existing login token"
+          },
+          "400" : {
+            "description" : "Business logic error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Could not find the specified token"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Data error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Could not delete the specified token"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users" : {
+      "get" : {
+        "description" : "Returns user data, for authenticated user",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "email",
+          "description" : "user's email",
+          "type" : "string"
+        }, {
+          "in" : "header",
+          "name" : "token",
+          "description" : "authentication token",
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Returns the existing user data",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "email" : {
+                  "type" : "string",
+                  "example" : "user.pizza@example.com"
+                },
+                "fullname" : {
+                  "type" : "string",
+                  "example" : "JoHn Doe"
+                },
+                "address" : {
+                  "type" : "string",
+                  "example" : "Main street, New York"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Business logic error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Could not find the specified user"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Authorization error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Missing required token in header, or given token is invalid"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Data error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Could not load user's data"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "description" : "Create a new user",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "object with user data",
+          "description" : "user's contact and registration data",
+          "schema" : {
+            "type" : "object",
+            "required" : [ "email", "password", "fullname", "address" ],
+            "properties" : {
+              "email" : {
+                "type" : "string",
+                "example" : "user.pizza@example.com"
+              },
+              "password" : {
+                "type" : "string",
+                "example" : "secret"
+              },
+              "fullname" : {
+                "type" : "string",
+                "example" : "JoHn Doe"
+              },
+              "address" : {
+                "type" : "string",
+                "example" : "Main street, New York"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Create the new user data"
+          },
+          "400" : {
+            "description" : "Business logic error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "A user with that email address already exists"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Data error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Could not create the new user"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "description" : "Update data of existing user",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "object with user data",
+          "description" : "user's contact and registration data",
+          "schema" : {
+            "type" : "object",
+            "required" : [ "email" ],
+            "properties" : {
+              "email" : {
+                "type" : "string",
+                "example" : "user.pizza@example.com"
+              },
+              "password" : {
+                "type" : "string",
+                "example" : "secret"
+              },
+              "fullname" : {
+                "type" : "string",
+                "example" : "JoHn Doe"
+              },
+              "address" : {
+                "type" : "string",
+                "example" : "Main street, New York"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Update user data"
+          },
+          "400" : {
+            "description" : "Business logic error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "This specified user doesn't exist"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Authorization error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Missing required token in header, or given token is invalid"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Data error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Could not update the user"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "description" : "Delete data of existing user",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "email",
+          "description" : "user's email",
+          "type" : "string"
+        }, {
+          "in" : "header",
+          "name" : "token",
+          "description" : "authentication token",
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Delete user data"
+          },
+          "400" : {
+            "description" : "Business logic error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "This specified user doesn't exist"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Authorization error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Missing required token in header, or given token is invalid"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Data error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Could not delete the user"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/offer" : {
+      "get" : {
+        "description" : "Gets all items on menu",
+        "responses" : {
+          "200" : {
+            "description" : "Returns the all item",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "properties" : {
+                  "id" : {
+                    "type" : "string",
+                    "example" : 100
+                  },
+                  "name" : {
+                    "type" : "string",
+                    "example" : "DIABOLA"
+                  },
+                  "mixtureCzech" : {
+                    "type" : "string",
+                    "example" : "smetana, mozzarella"
+                  },
+                  "mixtureEnglish" : {
+                    "type" : "string",
+                    "example" : "cream, mozzarella"
+                  },
+                  "price" : {
+                    "type" : "number",
+                    "example" : 195
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Business logic error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Could not find catalog items"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Authorization error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Missing required token in header, or given token is invalid"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Data error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Could not load catalog items"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/shopping" : {
+      "get" : {
+        "description" : "Get itens in shopping cart",
+        "parameters" : [ {
+          "in" : "header",
+          "name" : "token",
+          "description" : "authentication token",
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "get list of items in shopping cart"
+          },
+          "400" : {
+            "description" : "Business logic error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Cannot find any articles to offer"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Authorization error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Missing required token in header, or given token is invalid"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Data error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Could not load catalog items"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "description" : "Add item to shopping cart",
+        "parameters" : [ {
+          "in" : "header",
+          "name" : "token",
+          "description" : "authentication token",
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "object with item id",
+          "description" : "item id",
+          "schema" : {
+            "type" : "object",
+            "required" : [ "id" ],
+            "properties" : {
+              "id" : {
+                "type" : "string",
+                "example" : 100
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "add item to shopping cart and return list of item in shopping cart",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "totalPrice" : {
+                  "type" : "number",
+                  "example" : 345
+                },
+                "cartItems" : {
+                  "type" : "array",
+                  "items" : {
+                    "properties" : {
+                      "id" : {
+                        "type" : "string",
+                        "example" : 100
+                      },
+                      "name" : {
+                        "type" : "string",
+                        "example" : "DIABOLA"
+                      },
+                      "mixtureCzech" : {
+                        "type" : "string",
+                        "example" : "smetana, mozzarella"
+                      },
+                      "mixtureEnglish" : {
+                        "type" : "string",
+                        "example" : "cream, mozzarella"
+                      },
+                      "price" : {
+                        "type" : "number",
+                        "example" : 195
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Business logic error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Specified article doesn't exist in catalog"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Authorization error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Missing required token in header, or given token is invalid"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Data error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Could not update the cart"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "description" : "Delete all items from shoping cart",
+        "parameters" : [ {
+          "in" : "header",
+          "name" : "token",
+          "description" : "authentication token",
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "delete all itms from shopping cart"
+          },
+          "400" : {
+            "description" : "Business logic error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Could not find user's cart"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Authorization error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Missing required token in header, or given token is invalid"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Data error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Could not delete user's cart"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/checkout" : {
+      "post" : {
+        "description" : "place the order based on content of user's shopping cart",
+        "parameters" : [ {
+          "in" : "header",
+          "name" : "token",
+          "description" : "authentication token",
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "crete a new order, send an email and execute the users payment, clear shopping cart"
+          },
+          "400" : {
+            "description" : "Business logic error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Could not find user's cart"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "Authorization error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Missing required token in header, or given token is invalid"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Data error",
+            "schema" : {
+              "type" : "object",
+              "properties" : {
+                "Error" : {
+                  "type" : "string",
+                  "example" : "Could not create the order"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
