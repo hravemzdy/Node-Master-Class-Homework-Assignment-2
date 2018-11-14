@@ -14,6 +14,14 @@ You are building the API for a pizza-delivery company. Don't worry about a front
 
 6. When an order is placed, you should email the user a receipt. You should integrate with the sandbox of Mailgun.com for this. Note: Every Mailgun account comes with a sandbox email account domain (whatever@sandbox123.mailgun.org) that you can send from by default. So, there's no need to setup any DNS for your domain for this task https://documentation.mailgun.com/en/latest/faqs.html#how-do-i-pick-a-domain-name-for-my-mailgun-account
 
+    curl -s --user 'api:YOUR_API_KEY' \
+        https://api.mailgun.net/v3/YOUR_DOMAIN_NAME/messages \
+        -F from='Excited User <mailgun@YOUR_DOMAIN_NAME>' \
+        -F to=YOU@YOUR_DOMAIN_NAME \
+        -F to=bar@example.com \
+        -F subject='Hello' \
+        -F text='Testing some Mailgun awesomeness!'
+
 Important Note: If you use external libraries (NPM) to integrate with Stripe or Mailgun, you will not pass this assignment. You must write your API calls from scratch. Look up the "Curl" documentation for both APIs so you can figure out how to craft your API calls.
 
 This is an open-ended assignment. You may take any direction you'd like to go with it, as long as your project includes the requirements. It can include anything else you wish as well.
@@ -21,3 +29,29 @@ This is an open-ended assignment. You may take any direction you'd like to go wi
 P.S. Don't forget to document how a client should interact with the API you create!
 
 API https://documenter.getpostman.com/view/2851355/RzZ9GeNe
+
+* apiary
+* swagger
+* postman
+
+
+* getNonEmptyStringOrFalse
+* testSuccessOrderWithMock
+* testSuccessOrder
+* testMailgunApiCall
+* testStripeApiCall
+
+
+* debugCallbackError - return to caller:Error (err, errText)
+* debugCallbackSuccess - return to caller: Success (ok, data)
+* debugCallbackWriter
+
+
+* invoice.paymentAccepted
+* invoice.emailToUserSent
+
+
+* Success: ok=false, data
+* Error: errorText
+* Success: statusCode, data
+* Error: statusCode, errorText
