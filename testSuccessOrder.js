@@ -16,7 +16,7 @@ var _stripe = require('./lib/_utils_stripe');
 var _cart = require('./lib/_cart');
 
 //  TEST data
-var testUserEmail = 'test@seznam.cz';
+var testUserEmail = 'test@example.cz';
 var testUserFullname = 'Homework Test';
 var testUserAddress = 'Homework 125, Praha 4';
 var testUserPassword = 'verySecretAndPersonal';
