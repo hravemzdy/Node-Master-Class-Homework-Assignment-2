@@ -11,7 +11,7 @@ Startup steps:
 
 5. run command from terminal
    node index.js
-   
+
 The Assignment (Scenario):
 
 You are building the API for a pizza-delivery company. Don't worry about a frontend, just build the API. Here's the spec from your project manager:
@@ -35,29 +35,3 @@ This is an open-ended assignment. You may take any direction you'd like to go wi
 P.S. Don't forget to document how a client should interact with the API you create!
 
 API https://documenter.getpostman.com/view/2851355/RzZ9GeNe
-
-* apiary
-* swagger
-* postman
-
-
-* getNonEmptyStringOrFalse
-* testSuccessOrderWithMock
-* testSuccessOrder
-* testMailgunApiCall
-* testStripeApiCall
-
-
-* debugCallbackError - return to caller:Error (err, errText)
-* debugCallbackSuccess - return to caller: Success (ok, data)
-* debugCallbackWriter
-
-
-* invoice.paymentAccepted
-* invoice.emailToUserSent
-
-
-* Success: ok=false, data
-* Error: errorText
-* Success: statusCode, data
-* Error: statusCode, errorText
