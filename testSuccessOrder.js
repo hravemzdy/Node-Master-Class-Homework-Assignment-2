@@ -16,43 +16,62 @@ var _stripe = require('./lib/_utils_stripe');
 var _cart = require('./lib/_cart');
 
 //  TEST data
-var testUserEmail = 'ladislav.test@seznam.cz';
+var testUserEmail = 'ladislav.lisy@seznam.cz';
 var testUserFullname = 'Ladislav Test';
 var testUserAddress = 'Na Pankraci 125, Praha 4';
 var testUserPassword = 'verySecretAndPersonal';
 
-_user_service.create(testUserEmail,testUserPassword,testUserFullname,testUserAddress,function(err){
-  console.log('USER SERVICE ERROR: ', err);
+_user_service.create(testUserEmail,testUserPassword,testUserFullname,testUserAddress,function(err, errCreateUser){
+  console.log('USER SERVICE STATUS: ', err);
   if (err==200){
     _user_service.findByEmail(testUserEmail,function(err,userData){
-      console.log('FIND USER SERVICE ERROR: ', err);
+      console.log('FIND USER SERVICE STATUS: ', err);
       if (err==200){
         console.log('USER DATA: ', userData);
         _token_service.create(testUserEmail,testUserPassword,function(err,tokenData){
-          console.log('TOKEN SERVICE ERROR: ', err);
+          console.log('TOKEN SERVICE STATUS: ', err);
           if (err==200){
             console.log('TOKEN CREATED: ', tokenData);
             _shopping_service.addToCart('100',testUserEmail,function(err,userCart){
-              console.log('CART SERVICE ERROR: ', err);
+              console.log('CART SERVICE STATUS: ', err);
               if (err==200){
                   console.log('ARTICLE ADDED: ', userCart);
                   _shopping_service.addToCart('105',testUserEmail,function(err,userCart){
-                    console.log('CART SERVICE ERROR: ', err);
+                    console.log('CART SERVICE STATUS: ', err);
                     if (err==200){
                       console.log('ARTICLE ADDED: ', userCart);
                       _checkout_service.placeOrder(testUserEmail,function(err,userInvoice){
-                        console.log('CHECKUT SERVICE ERROR: ', err);
+                        console.log('CHECKUT SERVICE STATUS: ', err);
                         if (err==200){
                           console.log('ORDER PLACED: ', userInvoice);
-                        }
+                          console.log(helpers.msg_ok('TEST SUCCESFUL'));
+                        }else{
+                          console.log('ORDER ERROR: ', userInvoice);
+                          console.log(helpers.msg_err('TEST FAILED'));
+                      }
                       });
+                    }else{
+                      console.log('ORDER ERROR: ', userCart);
+                      console.log(helpers.msg_err('TEST FAILED'));
                     }
                   });
+                }else{
+                  console.log('ORDER ERROR: ', userCart);
+                  console.log(helpers.msg_err('TEST FAILED'));
                 }
               });
+            }else{
+              console.log('ORDER ERROR: ', tokenData);
+              console.log(helpers.msg_err('TEST FAILED'));
             }
           });
+        }else{
+          console.log('ORDER ERROR: ', userData);
+          console.log(helpers.msg_err('TEST FAILED'));
         }
     });
+  }else{
+    console.log('ORDER ERROR: ', errCreateUser);
+    console.log(helpers.msg_err('TEST FAILED'));
   }
 });

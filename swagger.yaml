@@ -12,12 +12,12 @@ paths:
   /login:
     post:
      description: User login with email and password
-     parameters: 
+     parameters:
       - in: body
         name: user's login data
         description: email and password of user
         schema:
-          type: object 
+          type: object
           required:
             - email
             - password
@@ -29,11 +29,11 @@ paths:
               type: string
               example: secret
      responses:
-      200: 
+      200:
         description: create a new login token
         schema:
           type: object
-          properties:   
+          properties:
             email:
               type: string
               example: user.pizza@example.com
@@ -47,26 +47,26 @@ paths:
         description: Business logic error
         schema:
           type: object
-          properties:   
+          properties:
             Error:
               type: string
               example: Could not find the specified user
-      500: 
+      500:
         description: Data error
         schema:
           type: object
-          properties:   
+          properties:
             Error:
               type: string
               example: Could not create a new token
     put:
      description: User extending token for 1 hour from now
-     parameters: 
+     parameters:
       - in: body
         name: user's token data
         description: token id and extend flag
         schema:
-          type: object 
+          type: object
           required:
             - id
             - extend
@@ -78,11 +78,11 @@ paths:
               type: boolean
               example: true
      responses:
-      200: 
+      200:
         description: extends expiration time of login token
         schema:
           type: object
-          properties:   
+          properties:
             email:
               type: string
               example: user.pizza@example.com
@@ -96,49 +96,49 @@ paths:
         description: Business logic error
         schema:
           type: object
-          properties:   
+          properties:
             Error:
               type: string
               example: Could not update token's expiration
-      500: 
+      500:
         description: Data error
         schema:
           type: object
-          properties:   
+          properties:
             Error:
               type: string
               example: Token already expired and can't be extended
   /logout:
     delete:
      description: User deleting existing token
-     parameters: 
+     parameters:
       - in: query
         name: id
         description: token id
-        type: string 
+        type: string
      responses:
-      200: 
+      200:
         description: delete a existing login token
       400:
         description: Business logic error
         schema:
           type: object
-          properties:   
+          properties:
             Error:
               type: string
               example: Could not find the specified token
-      500: 
+      500:
         description: Data error
         schema:
           type: object
-          properties:   
+          properties:
             Error:
               type: string
               example: Could not delete the specified token
   /users:
     get:
       description: Returns user data, for authenticated user
-      parameters: 
+      parameters:
        - in: query
          name: email
          description: user's email
@@ -148,7 +148,7 @@ paths:
          description: authentication token
          type: string
       responses:
-        200: 
+        200:
           description: Returns the existing user data
           schema:
             type: object
@@ -161,12 +161,12 @@ paths:
                 example: JoHn Doe
               address:
                 type: string
-                example: Main street, New York 
+                example: Main street, New York
         400:
           description: Business logic error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Could not find the specified user
@@ -174,21 +174,21 @@ paths:
           description: Authorization error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Missing required token in header, or given token is invalid
-        500: 
+        500:
           description: Data error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Could not load user's data
     post:
       description: Create a new user
-      parameters: 
+      parameters:
        - in: body
          name: object with user data
          description: user's contact and registration data
@@ -211,29 +211,29 @@ paths:
                example: JoHn Doe
              address:
                type: string
-               example: Main street, New York   
+               example: Main street, New York
       responses:
-        200: 
+        200:
           description: Create the new user data
         400:
           description: Business logic error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: A user with that email address already exists
-        500: 
+        500:
           description: Data error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Could not create the new user
     put:
       description: Update data of existing user
-      parameters: 
+      parameters:
        - in: body
          name: object with user data
          description: user's contact and registration data
@@ -253,15 +253,15 @@ paths:
                example: JoHn Doe
              address:
                type: string
-               example: Main street, New York   
+               example: Main street, New York
       responses:
-        200: 
+        200:
           description: Update user data
         400:
           description: Business logic error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: This specified user doesn't exist
@@ -269,21 +269,21 @@ paths:
           description: Authorization error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Missing required token in header, or given token is invalid
-        500: 
+        500:
           description: Data error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Could not update the user
     delete:
       description: Delete data of existing user
-      parameters: 
+      parameters:
        - in: query
          name: email
          description: user's email
@@ -293,13 +293,13 @@ paths:
          description: authentication token
          type: string
       responses:
-        200: 
+        200:
           description: Delete user data
         400:
           description: Business logic error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: This specified user doesn't exist
@@ -307,15 +307,15 @@ paths:
           description: Authorization error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Missing required token in header, or given token is invalid
-        500: 
+        500:
           description: Data error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Could not delete the user
@@ -348,7 +348,7 @@ paths:
           description: Business logic error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Could not find catalog items
@@ -356,34 +356,34 @@ paths:
           description: Authorization error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Missing required token in header, or given token is invalid
-        500: 
+        500:
           description: Data error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Could not load catalog items
   /shopping:
     get:
       description: Get itens in shopping cart
-      parameters: 
+      parameters:
        - in: header
          name: token
          description: authentication token
          type: string
       responses:
-        200: 
+        200:
           description: get list of items in shopping cart
         400:
           description: Business logic error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Cannot find any articles to offer
@@ -391,21 +391,21 @@ paths:
           description: Authorization error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Missing required token in header, or given token is invalid
-        500: 
+        500:
           description: Data error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Could not load catalog items
     post:
       description: Add item to shopping cart
-      parameters: 
+      parameters:
        - in: header
          name: token
          description: authentication token
@@ -453,7 +453,7 @@ paths:
           description: Business logic error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Specified article doesn't exist in catalog
@@ -461,33 +461,33 @@ paths:
           description: Authorization error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Missing required token in header, or given token is invalid
-        500: 
+        500:
           description: Data error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Could not update the cart
     delete:
       description: Delete all items from shoping cart
-      parameters: 
+      parameters:
        - in: header
          name: token
          description: authentication token
          type: string
       responses:
-        200: 
+        200:
           description: delete all itms from shopping cart
         400:
           description: Business logic error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Could not find user's cart
@@ -495,34 +495,34 @@ paths:
           description: Authorization error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Missing required token in header, or given token is invalid
-        500: 
+        500:
           description: Data error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Could not delete user's cart
   /checkout:
     post:
       description: place the order based on content of user's shopping cart
-      parameters: 
+      parameters:
        - in: header
          name: token
          description: authentication token
          type: string
       responses:
-        200: 
+        200:
           description: crete a new order, send an email and execute the users payment, clear shopping cart
         400:
           description: Business logic error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Could not find user's cart
@@ -530,15 +530,15 @@ paths:
           description: Authorization error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Missing required token in header, or given token is invalid
-        500: 
+        500:
           description: Data error
           schema:
             type: object
-            properties:   
+            properties:
               Error:
                 type: string
                 example: Could not create the order
