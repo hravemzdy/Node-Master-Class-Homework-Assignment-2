@@ -9,8 +9,8 @@
 var helpers = require('./lib/helpers');
 
 //  TEST data
-var testEmailGood = 'ladislav.lisy@seznam.cz';
-var testEmailFail = 'ladis@lav.lisy@seznam.cz';
+var testEmailGood = 'homework@example.cz';
+var testEmailFail = 'h@mework@example.cz';
 
 // Tests
 var testReultGood = helpers.getValidEmailStringOrFalse(testEmailGood);

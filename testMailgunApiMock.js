@@ -11,7 +11,7 @@ var _mailgun = require('./lib/_utils_mailgun');
 var _cart = require('./lib/_cart');
 
 //  TEST data
-var testEmail = 'ladislav.lisy@seznam.cz';
+var testEmail = 'test@example.cz';
 
 var testArticle = {
   'id' : '500',
@@ -23,8 +23,8 @@ var testArticle = {
 
 var testUser = {
   'email' : testEmail,
-  'fullname' : 'Ladislav Lisy',
-  'address' : 'Hradebni 1362, CZ'
+  'fullname' : 'Homework Test',
+  'address' : 'Homework 1362, CZ'
 };
 
 var emptyCart = _cart.createEmptyCart(testEmail);

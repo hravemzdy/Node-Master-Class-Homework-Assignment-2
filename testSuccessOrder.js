@@ -16,9 +16,9 @@ var _stripe = require('./lib/_utils_stripe');
 var _cart = require('./lib/_cart');
 
 //  TEST data
-var testUserEmail = 'ladislav.lisy@seznam.cz';
-var testUserFullname = 'Ladislav Test';
-var testUserAddress = 'Na Pankraci 125, Praha 4';
+var testUserEmail = 'test@seznam.cz';
+var testUserFullname = 'Homework Test';
+var testUserAddress = 'Homework 125, Praha 4';
 var testUserPassword = 'verySecretAndPersonal';
 
 _user_service.create(testUserEmail,testUserPassword,testUserFullname,testUserAddress,function(err, errCreateUser){
