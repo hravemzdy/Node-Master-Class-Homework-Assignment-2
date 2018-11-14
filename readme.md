@@ -1,4 +1,4 @@
-Startup steps:
+## Startup steps:
 
 1. run command from terminal
    node init_env.js
@@ -9,10 +9,19 @@ Startup steps:
 
 4. create folder https and provide files cert.pem and key.pem
 
-5. run command from terminal
+5. review and update lib/config.js file
+
+6. run command from terminal
    node index.js
 
-The Assignment (Scenario):
+
+## The API documentation (POSTMAN):
+
+https://www.getpostman.com/collections/2b52ea559d7b02b6ae8e
+
+https://documenter.getpostman.com/view/2851355/RzZAme6k
+
+## The Assignment (Scenario):
 
 You are building the API for a pizza-delivery company. Don't worry about a frontend, just build the API. Here's the spec from your project manager:
 
@@ -33,5 +42,3 @@ Important Note: If you use external libraries (NPM) to integrate with Stripe or 
 This is an open-ended assignment. You may take any direction you'd like to go with it, as long as your project includes the requirements. It can include anything else you wish as well.
 
 P.S. Don't forget to document how a client should interact with the API you create!
-
-API https://documenter.getpostman.com/view/2851355/RzZ9GeNe

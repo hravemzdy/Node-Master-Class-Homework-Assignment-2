@@ -27,9 +27,6 @@
 
 // Dependecies
 var server = require('./lib/server');
-var _data = require('./lib/_data');
-var _catalog = require('./lib/catalog_service');
-var helpers = require('./lib/helpers');
 
 // Declare the app
 var app = {};
@@ -38,24 +35,6 @@ var app = {};
 app.init = function() {
   // Start the server
   server.init();
-
-  _data.init(function(callback) {
-    _catalog.initPiizaCatalog(function(err){
-      if (!err){
-        console.log(helpers.msg_ok("Catalog successfully updated with pizzas"));
-      }else{
-        console.log(helpers.msg_err("Catalog failed update with pizzas"));
-      }
-      _catalog.initSweetCatalog(function(err){
-        if (!err){
-          console.log(helpers.msg_ok("Catalog successfully updated with sweets"));
-        }else{
-          console.log(helpers.msg_err("Catalog failed update with sweets"));
-        }
-        callback();
-      });
-    });
-  });
 };
 
 // Execute the init Function

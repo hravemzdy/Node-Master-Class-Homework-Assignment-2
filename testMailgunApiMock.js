@@ -2,7 +2,7 @@
 /*
  * PIZZA Shop rest API
  *
- * Test Mailgun API
+ * Test Mailgun API with Mock
  */
 
 // Dependencies
@@ -49,7 +49,7 @@ var testConfirm = _mailgun.createEmailConfirmation(testInvoice);
 console.log(helpers.msg_ok('NOTIFICATION:'));
 console.log(testConfirm);
 
-_mailgun.notifyCustomerByEmail(testConfirm, function(err){
+_mailgun.notifyCustomerByEmailMock(testConfirm, function(err){
   if (!err){
     console.log(helpers.msg_ok("MAILGUN request ended successfully"));
   }else{

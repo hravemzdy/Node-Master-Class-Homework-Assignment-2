@@ -15,10 +15,10 @@ var testEmailFail = 'ladis@lav.lisy@seznam.cz';
 // Tests
 var testReultGood = helpers.getValidEmailStringOrFalse(testEmailGood);
 var testReultFail = helpers.getValidEmailStringOrFalse(testEmailFail);
-console.log('Good result:', testReultGood);
-console.log('Fail result:', testReultFail);
+console.log(helpers.msg_ok('Good result:'), testReultGood);
+console.log(helpers.msg_err('Fail result:'), testReultFail);
 
 var testRegExGood = testEmailGood.match(helpers.emailRegExPattern);
 var testRegExFail = testEmailFail.match(helpers.emailRegExPattern);
-console.log('Good result:', testRegExGood);
-console.log('Fail result:', testRegExFail);
+console.log(helpers.msg_ok('Good result:'), testRegExGood);
+console.log(helpers.msg_err('Fail result:'), testRegExFail);

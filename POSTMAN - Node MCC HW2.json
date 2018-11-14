@@ -1,0 +1,505 @@
+{
+	"info": {
+		"_postman_id": "47a41c99-57fc-4ee9-b3fc-15984c8aaf0a",
+		"name": "Node MasterClass Course Homework 2",
+		"description": "Pirple",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"item": [
+				{
+					"name": "Untitled Request",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"token\" : \"token-1234567890\",\n\t\"extend\" : true\n}"
+						},
+						"url": {
+							"raw": "https://virtserver.swaggerhub.com/MzdyHrave/Pizza2/1/login",
+							"protocol": "https",
+							"host": [
+								"virtserver",
+								"swaggerhub",
+								"com"
+							],
+							"path": [
+								"MzdyHrave",
+								"Pizza2",
+								"1",
+								"login"
+							]
+						},
+						"description": "User extending token for 1 hour from now"
+					},
+					"response": []
+				},
+				{
+					"name": "Untitled Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"email\" : \"user@example.com\",\n\"password\" : \"secret\"\n}\n"
+						},
+						"url": {
+							"raw": "https://virtserver.swaggerhub.com/MzdyHrave/Pizza2/1/login",
+							"protocol": "https",
+							"host": [
+								"virtserver",
+								"swaggerhub",
+								"com"
+							],
+							"path": [
+								"MzdyHrave",
+								"Pizza2",
+								"1",
+								"login"
+							]
+						},
+						"description": "User login with email and password"
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for login"
+		},
+		{
+			"name": "logout",
+			"item": [
+				{
+					"name": "Untitled Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://virtserver.swaggerhub.com/MzdyHrave/Pizza2/1/logout?id={{id}}",
+							"protocol": "https",
+							"host": [
+								"virtserver",
+								"swaggerhub",
+								"com"
+							],
+							"path": [
+								"MzdyHrave",
+								"Pizza2",
+								"1",
+								"logout"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{id}}"
+								}
+							]
+						},
+						"description": "User deleting existing token"
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for logout"
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Untitled Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fullname\" : \"{{user_fullname}}\", \n\t\"email\" : \"{{user_email}}\",\n\t\"password\" : \"{{password}}\",\n\t\"address\" : \"{{user_address}}\"\n}\n"
+						},
+						"url": {
+							"raw": "https://virtserver.swaggerhub.com/MzdyHrave/Pizza2/1/users",
+							"protocol": "https",
+							"host": [
+								"virtserver",
+								"swaggerhub",
+								"com"
+							],
+							"path": [
+								"MzdyHrave",
+								"Pizza2",
+								"1",
+								"users"
+							]
+						},
+						"description": "Create a new user"
+					},
+					"response": []
+				},
+				{
+					"name": "Untitled Request",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "user's contact and registration data"
+						},
+						"url": {
+							"raw": "https://virtserver.swaggerhub.com/MzdyHrave/Pizza2/1/users",
+							"protocol": "https",
+							"host": [
+								"virtserver",
+								"swaggerhub",
+								"com"
+							],
+							"path": [
+								"MzdyHrave",
+								"Pizza2",
+								"1",
+								"users"
+							]
+						},
+						"description": "Update data of existing user"
+					},
+					"response": []
+				},
+				{
+					"name": "Untitled Request",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://virtserver.swaggerhub.com/MzdyHrave/Pizza2/1/users?email={{email}}",
+							"protocol": "https",
+							"host": [
+								"virtserver",
+								"swaggerhub",
+								"com"
+							],
+							"path": [
+								"MzdyHrave",
+								"Pizza2",
+								"1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "{{email}}"
+								}
+							]
+						},
+						"description": "Delete data of existing user"
+					},
+					"response": []
+				},
+				{
+					"name": "Untitled Request",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://virtserver.swaggerhub.com/MzdyHrave/Pizza2/1/users?email={{email}}",
+							"protocol": "https",
+							"host": [
+								"virtserver",
+								"swaggerhub",
+								"com"
+							],
+							"path": [
+								"MzdyHrave",
+								"Pizza2",
+								"1",
+								"users"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "{{email}}"
+								}
+							]
+						},
+						"description": "Returns user data, for authenticated user"
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for users"
+		},
+		{
+			"name": "offer",
+			"item": [
+				{
+					"name": "Untitled Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://virtserver.swaggerhub.com/MzdyHrave/Pizza2/1/offer",
+							"protocol": "https",
+							"host": [
+								"virtserver",
+								"swaggerhub",
+								"com"
+							],
+							"path": [
+								"MzdyHrave",
+								"Pizza2",
+								"1",
+								"offer"
+							]
+						},
+						"description": "Gets all items on menu"
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for offer"
+		},
+		{
+			"name": "shopping",
+			"item": [
+				{
+					"name": "Untitled Request",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://virtserver.swaggerhub.com/MzdyHrave/Pizza2/1/shopping",
+							"protocol": "https",
+							"host": [
+								"virtserver",
+								"swaggerhub",
+								"com"
+							],
+							"path": [
+								"MzdyHrave",
+								"Pizza2",
+								"1",
+								"shopping"
+							]
+						},
+						"description": "Delete all items from shoping cart"
+					},
+					"response": []
+				},
+				{
+					"name": "Untitled Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "item id"
+						},
+						"url": {
+							"raw": "https://virtserver.swaggerhub.com/MzdyHrave/Pizza2/1/shopping",
+							"protocol": "https",
+							"host": [
+								"virtserver",
+								"swaggerhub",
+								"com"
+							],
+							"path": [
+								"MzdyHrave",
+								"Pizza2",
+								"1",
+								"shopping"
+							]
+						},
+						"description": "Add item to shopping cart"
+					},
+					"response": []
+				},
+				{
+					"name": "Untitled Request",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://virtserver.swaggerhub.com/MzdyHrave/Pizza2/1/shopping",
+							"protocol": "https",
+							"host": [
+								"virtserver",
+								"swaggerhub",
+								"com"
+							],
+							"path": [
+								"MzdyHrave",
+								"Pizza2",
+								"1",
+								"shopping"
+							]
+						},
+						"description": "Get itens in shopping cart"
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for shopping"
+		},
+		{
+			"name": "checkout",
+			"item": [
+				{
+					"name": "Untitled Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://virtserver.swaggerhub.com/MzdyHrave/Pizza2/1/checkout",
+							"protocol": "https",
+							"host": [
+								"virtserver",
+								"swaggerhub",
+								"com"
+							],
+							"path": [
+								"MzdyHrave",
+								"Pizza2",
+								"1",
+								"checkout"
+							]
+						},
+						"description": "place the order based on content of user's shopping cart"
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for checkout"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f1937ba6-c1cd-4d80-aaa2-a04da2a3fa02",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "38a30492-4cb5-4c01-a3fd-5d81d4652bc4",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "e31d4a85-5c6b-467a-8d65-614e37f52357",
+			"key": "token",
+			"value": "5fwgc9gvody9adkqqn3t",
+			"type": "string"
+		},
+		{
+			"id": "ed124d1c-dae6-4f06-a1c6-1673399aeea7",
+			"key": "user_email",
+			"value": "customer@example.com",
+			"type": "string"
+		},
+		{
+			"id": "f8d3a53e-8aed-43fb-b6fd-6446ce7b93cf",
+			"key": "password",
+			"value": "secret12345",
+			"type": "string"
+		},
+		{
+			"id": "a6e3bbbd-2a2e-4ba2-8901-b1a5a74243bf",
+			"key": "user_fullname",
+			"value": "Joe Doe",
+			"type": "string"
+		},
+		{
+			"id": "233c3160-2110-4ca0-b2b4-e25be2fb04ae",
+			"key": "user_address",
+			"value": "Lost Paradise",
+			"type": "string"
+		},
+		{
+			"id": "89a7babd-33e3-469b-9861-59254e9f1ff2",
+			"key": "article_pizza",
+			"value": "100",
+			"type": "string"
+		},
+		{
+			"id": "4590d406-2919-4b6c-b0a3-9c302f93962d",
+			"key": "article_sweet",
+			"value": "500",
+			"type": "string"
+		}
+	]
+}
