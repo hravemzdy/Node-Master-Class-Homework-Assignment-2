@@ -1,3 +1,17 @@
+Startup steps:
+
+1. run command from terminal
+   node init_env.js
+
+2. update file api\_keys/\_key\_mailgun.json with keys (sandboxid, token_pub, token_sec)
+
+3. update file api\_keys/\_key\_stripe.json with keys (token_pub, token_sec)
+
+4. create folder https and provide files cert.pem and key.pem
+
+5. run command from terminal
+   node index.js
+   
 The Assignment (Scenario):
 
 You are building the API for a pizza-delivery company. Don't worry about a frontend, just build the API. Here's the spec from your project manager:
@@ -13,14 +27,6 @@ You are building the API for a pizza-delivery company. Don't worry about a front
 5. A logged-in user should be able to create an order. You should integrate with the Sandbox of Stripe.com to accept their payment. Note: Use the stripe sandbox for your testing. Follow this link and click on the "tokens" tab to see the fake tokens you can use server-side to confirm the integration is working: https://stripe.com/docs/testing#cards
 
 6. When an order is placed, you should email the user a receipt. You should integrate with the sandbox of Mailgun.com for this. Note: Every Mailgun account comes with a sandbox email account domain (whatever@sandbox123.mailgun.org) that you can send from by default. So, there's no need to setup any DNS for your domain for this task https://documentation.mailgun.com/en/latest/faqs.html#how-do-i-pick-a-domain-name-for-my-mailgun-account
-
-    curl -s --user 'api:YOUR_API_KEY' \
-        https://api.mailgun.net/v3/YOUR_DOMAIN_NAME/messages \
-        -F from='Excited User <mailgun@YOUR_DOMAIN_NAME>' \
-        -F to=YOU@YOUR_DOMAIN_NAME \
-        -F to=bar@example.com \
-        -F subject='Hello' \
-        -F text='Testing some Mailgun awesomeness!'
 
 Important Note: If you use external libraries (NPM) to integrate with Stripe or Mailgun, you will not pass this assignment. You must write your API calls from scratch. Look up the "Curl" documentation for both APIs so you can figure out how to craft your API calls.
 
