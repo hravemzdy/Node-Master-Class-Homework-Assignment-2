@@ -14,6 +14,105 @@
 6. run command from terminal
    node index.js
 
+## The API routes:
+
+* POST host:3000/login - application/json
+   * body
+      * email, string
+      * password, string
+
+   * response-body
+      * email, string
+      * id, string(20)
+      * expires, number
+
+* PUT host:3000/login - application/json
+   * body
+      * token, string(20)
+      * extend, boolean
+
+   * response-body
+      * email, string
+      * id, string(20)
+      * expires, number
+
+* DELETE host:3000/logout
+   * query string
+      * id, string(20)
+
+* POST host:3000/users - application/json
+   * body
+      * fullname, string
+      * email, string
+      * address, string
+      * password, string
+
+* PUT host:3000/users - application/json
+  * header
+      * token, string(20)
+  * body
+      * fullname, string
+      * email, string
+      * address, string
+      * password, string
+
+* GET host:3000/users - application/json
+  * header
+      * token, string(20)
+  * response-body
+      * fullname, string
+      * email, string
+      * address, string
+      * password, string
+
+* DELETE host:3000/users - application/json
+   * header
+      * token, string(20)
+
+* GET host:3000/offer
+   * header
+      * token, string(20)
+   * response-body
+      * array[object<catalog>]
+
+* POST host:3000/shopping - application/json
+   * header
+      * token, string(20)
+   * body
+      * id, string(3) [100-122, 500]
+   * response-body
+      * object<Cart>
+         * totalPrice, number
+         * totalCount, number
+         * cartItems, Array[object<CartItem>]
+            * id, string(3)
+            * name, string
+            * mixtureCzech, string
+            * mixtureEnglish, string
+            * price, number
+
+* GET host:3000/shopping
+   * header
+      * token, string(20)
+   * response-body
+      * object<Cart>
+         * totalPrice, number
+         * totalCount, number
+         * cartItems, Array[object<CartItem>]
+            * id, string(3)
+            * name, string
+            * mixtureCzech, string
+            * mixtureEnglish, string
+            * price, number
+
+* DELETE host:3000/shopping
+   * header
+      * token, string(20)
+
+* POST host:3000/checkout
+   * header
+      * token, string(20)
+
 
 ## The API documentation (POSTMAN):
 
